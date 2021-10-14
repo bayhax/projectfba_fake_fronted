@@ -45,10 +45,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../../../Django/projectfba_fake/template/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../../apps/home'),
+    assetsRoot: path.resolve(__dirname, '../../../Django/projectfba_fake/apps/home'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
