@@ -4,10 +4,10 @@
  */
 import axios from 'axios'
 import router from '../router'
-import store from '../store/index'
+// import store from '../store/index'
 import { Toast } from 'vant'
 import Vuex from 'vuex'
-store = Vuex.Store
+const store = Vuex.Store
 
 /**
  * 提示函数

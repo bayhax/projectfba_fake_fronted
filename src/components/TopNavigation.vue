@@ -6,10 +6,10 @@
       </el-menu>
     </div>
     <div class="top_right">
-      <el-menu class="el-menu-demo" mode="horizontal" style="border-bottom: 0;">
-        <el-menu-item index="1">Home</el-menu-item>
-        <el-menu-item index="2">Blog</el-menu-item>
-        <el-menu-item index="3">Link</el-menu-item>
+      <el-menu class="el-menu-demo" mode="horizontal" style="border-bottom: 0;" router>
+        <el-menu-item index="/">Home</el-menu-item>
+        <el-menu-item index="/blog">Blog</el-menu-item>
+        <el-menu-item index="/link_navigation">Link</el-menu-item>
       </el-menu>
     </div>
   </div>
