@@ -1,19 +1,19 @@
-// store.js
-import Vue from 'vue'
-import Vuex from 'vuex'
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-
-  state: {
-    count: 1
-  },
-
-  action: {
-    // ...
-  },
-
-  mutation: {
-  }
-})
-export default store
+import {
+  sysClient
+} from '@/clients/hprose-client'
+import * as TYPES from './mutation-types'
+const state = {
+}
+const getters = {
+}
+const mutations = {
+}
+const actions = {
+  [TYPES.blog]: (context, args) => sysClient.getData('/blog', args),
+}
+export default {
+  state,
+  mutations,
+  getters,
+  actions
+}

@@ -2,35 +2,54 @@
   <div class="blog">
     <div class="blog_introduce">
       <div class="date_author">
-        <div>2021-11-15</div>
-        <div>John hacker</div>
+        <div>{{ blogData.blog_date }}</div>
+        <div>{{ blogData.blog_author }}</div>
       </div>
-      <div class="blog_title">Meta world</div>
+      <div class="blog_title">{{ blogData.blog_title }}</div>
     </div>
     <div class="blog_content">
+      <span>{{ blogData.blog_description }}</span>
       <span>
-        How to Fade In and Out Video in Premiere | Timestamps
-
-        Default Fade (Beginning and End Fades): 0:56
-        Effect Fade (Beginning and End Fades): 1:55
-        Keyframe Fade (Perfect for every situation): 2:55
-        Fading videos in and out is a great way to clean up your movies and adds a smooth transition between clips. Without fades, your movie may be jarring to your viewers.
-        In this video, I talk about three different ways to fade in and out video in premiere.
-        The first two ways are very quick and easy but only work at the beginning and end of clips. (Essentially, if you are trying to fade in and out the bookends of your video).
-        The third way to fade in and out of clips is by using keyframes on the opacity attribute. This way is a bit more advanced than the first two but is the most versatile and my primary go-to.
-        Check out these other Adobe tutorials:
-        Create patterns in Illustrator: https://wallamoose.com/patterns-in-illustrator/
-        How to convert JPG to Vector: https://wallamoose.com/jpeg-to-vector/
-        Edit clipping masks in Illustrator: https://wallamoose.com/clipping-masks/
+        {{ blogData.blog_content }}
       </span>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { getBlog } from '../store/mutation-type'
 export default {
-  name: 'Blog'
+  name: 'Blog',
+  data () {
+    return {
+      blogData: {
+        blog_id: 1,
+        blog_title: '',
+        blog_author: '',
+        blog_date: '',
+        blog_content: '',
+        blog_description: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      getBlog
+    }),
+    async getBlogData () {
+      let args = {blog_id: this.blog_id}
+      let result = await this.getBlog(args)
+      if (!result) return
+      let data = JSON.parse(result)
+      this.blogData = data.data
+    }
+  },
+  mounted () {
+    this.getBlogData()
+  }
 }
+
 </script>
 
 <style scoped>
