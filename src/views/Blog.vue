@@ -29,7 +29,8 @@ export default {
         blog_author: '',
         blog_date: '',
         blog_content: '',
-        blog_description: ''
+        blog_description: '',
+        blog_keywords: ''
       }
     }
   },
@@ -37,15 +38,16 @@ export default {
     ...mapActions({
       getBlog
     }),
-    async getBlogData () {
-      let args = {blog_id: this.blog_id}
-      let result = await this.getBlog(args)
-      if (!result) return
-      let data = JSON.parse(result)
-      this.blogData = data.data
+    getBlogData () {
+      let blogId = 1
+      this.$http.get('http://127.0.0.1:8000/blog/?blog_id=' + blogId)
+        .then((response) => {
+          if (!response) return
+          this.blogData = response.data
+        })
     }
   },
-  mounted () {
+  mounted: function () {
     this.getBlogData()
   }
 }
