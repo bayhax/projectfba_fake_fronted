@@ -40,7 +40,7 @@ export default {
     }),
     getBlogData () {
       let blogId = 1
-      this.$http.get('http://127.0.0.1:8000/blog/?blog_id=' + blogId)
+      this.$http.get('http://localhost:8000/blog/?blog_id=' + blogId)
         .then((response) => {
           if (!response) return
           this.blogData = response.data
